@@ -7,17 +7,16 @@
   pointer-events: none;
 }
 
+/*
 .App-header {
-  /* min-height was given to us as 100. For whatever reason this set
-  the header to the bottom of the page, so I decided to change it to 
-  0vh. This may cause problems in the future, but as of right now it works.*/
-  min-height: 0vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
+*/
 
 .App-link {
   color: #61dafb;

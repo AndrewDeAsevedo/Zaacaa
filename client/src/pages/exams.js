@@ -4,7 +4,7 @@ export default function Exams() {
   return (
     <>
       <Header />
-      <h2> Exams</h2>
+      <h2> Exams Page</h2>
     </>
   );
 }

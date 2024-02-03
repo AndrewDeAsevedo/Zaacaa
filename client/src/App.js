@@ -12,9 +12,14 @@ function App() {
 
   return (
     <div className="App">
+      {/*
+      Not super sure what this does, and quite frankly it 
+      keeps breaking the code. Lmk if this messes anything up -Andrew
+
       <header className="App-header">
         <p>{response}</p>
-      </header>
+      </header>  
+      */}
 
       <BrowserRouter>
         <Routes>
