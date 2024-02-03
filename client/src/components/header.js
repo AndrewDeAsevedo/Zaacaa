@@ -9,7 +9,9 @@ export default function Header() {
         <a href="/home">Home</a>
         <a href="/exams">Exams</a>
         <a href="/admin">Admin</a>
-        <b href="/login">Log-in</b>
+        <a id="right" href="/login">
+          Log-in
+        </a>
       </nav>
     </header>
   );

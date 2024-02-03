@@ -6,6 +6,7 @@ import Home from "./pages/home";
 import Exams from "./pages/exams";
 import Patient from "./pages/patient";
 import Admin from "./pages/admin";
+import Login from "./pages/login";
 
 function App() {
   const { response } = useApi();
@@ -28,6 +29,7 @@ function App() {
           <Route path="/exams" element={<Exams />} />
           <Route path="/patient" element={<Patient />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
