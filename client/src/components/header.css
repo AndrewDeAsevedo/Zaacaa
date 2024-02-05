@@ -16,7 +16,8 @@
     font-size: 17px;
   }
   
-#right {
+  /* This is to move the log in button seperate from other buttons */
+ #right {
     float: right;
   }
 
