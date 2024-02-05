@@ -1,0 +1,22 @@
+.Exams {
+    font-size: 20px;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+table {
+	border: 2px solid rgb(0, 0, 0);
+	width: 100%;
+	height: 100%;
+}
+
+th {
+	border-bottom: 1px solid black;
+}
+
+td {
+	text-align: center;
+}
