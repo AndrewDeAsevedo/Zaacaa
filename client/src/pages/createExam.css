@@ -1,0 +1,33 @@
+/* Add this to your CSS file */
+.form-container {
+    display: grid;
+    grid-template-columns: 150px 1fr; /* Fixed width for labels, 1fr for inputs */
+    gap: 10px 20px; /* Vertical and horizontal gaps between grid items */
+    margin-bottom: 20px;
+  }
+  
+  .form-item {
+    display: contents; /* This makes the label and input align with the grid */
+  }
+  
+  /* Style for the submit button to ensure it's centered 
+  .submit-button {
+    margin-top: 20px; /* Adds some space between the form and the button 
+  }*/
+
+/* Centering the button container with gap */
+.button-container {
+    display: flex;
+    justify-content: center; /* Align buttons horizontally in the center */
+    gap: 20px; /* Increase space between buttons */
+    margin-top: 20px; /* Space above the buttons */
+  }
+  
+  
+  /* Additional button styles, if needed, to ensure consistency */
+  .button-container button {
+    padding: 10px 20px; /* Adjust padding as necessary */
+    cursor: pointer;
+  }
+  
+  

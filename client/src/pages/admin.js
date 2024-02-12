@@ -1,10 +1,18 @@
-import Header from "../components/header";
+// Create, Update, and Delete Exams
+import { useNavigate } from "react-router-dom";
 
-export default function Admin() {
-  return (
-    <>
-      <Header />
-      <h2> Admin Page</h2>
-    </>
-  );
+const Admin = () => {
+    let navigate = useNavigate();
+    const onCreate = async () => {
+        navigate('/exam/create'); 
+    }
+    return(
+        <div className="admin">
+            <h2>Admin</h2>
+            <button type="button" className="create-button" onClick={onCreate}>Create Exam</button>
+            {/*<button type="button" className="cancel-button" onClick={onCancel}>Cancel</button>*/}
+        </div>
+    )
 }
+
+export default Admin
