@@ -7,7 +7,7 @@ const uri = "mongodb+srv://cb2700:test123@mernapp.ruownzp.mongodb.net/?retryWrit
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+const client = new MongoClient(process.env.DB_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,

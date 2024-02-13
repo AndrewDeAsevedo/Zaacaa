@@ -53,6 +53,12 @@ const CreateExam = () => {
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
+    const handleURI = (event) => {
+        const name = event.target.name;
+        const value = encodeURI(event.target.value);
+        setInputs(values => ({...values, [name]: value}))
+    }
+
     return (
         <div className="CreateExam">
             <h2>Create Exam</h2>
@@ -154,7 +160,7 @@ const CreateExam = () => {
                         name="imageURL"
                         id="imageURL"
                         value={inputs.imageURL || ""}
-                        onChange={handleChange}
+                        onChange={handleURI}
                     />
                 </div>
                 {/* Button is placed outside the form to align it at the bottom of the page */}

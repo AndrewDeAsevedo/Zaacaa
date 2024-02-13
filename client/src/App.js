@@ -7,11 +7,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 // Pages and components
-import Home from "./pages/home";
-import Admin from "./pages/admin";
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
 import Exams from "./pages/exams";
 import CreateExam from "./pages/CreateExam";
-import Patient from "./pages/patient";
+import Patient from "./pages/Patient";
 import Login from "./pages/login";
 //import Navbar from './components/Navbar'
 
