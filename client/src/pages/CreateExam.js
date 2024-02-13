@@ -1,9 +1,7 @@
 // Allows you to create a new exam?
 import "./createExam.css";
 import { useState } from "react";
-import ReactDOM from "react-dom/client";
 import { useNavigate } from "react-router-dom";
-import { useApi } from "../hooks/use-api";
 
 import Header from "../components/header";
 
