@@ -6,7 +6,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 //const uri = "mongodb+srv://cb2700:test123@mernapp.ruownzp.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.DB_URI,, {
+const client = new MongoClient(process.env.DB_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -32,8 +32,8 @@ async function getAllExams(res) {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  getAllExams(res)
-});
+//router.get('/', function(req, res, next) {
+//  getAllExams(res)
+//});
 
 module.exports = router;

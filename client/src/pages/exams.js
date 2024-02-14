@@ -1,47 +1,62 @@
 // import React from "react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
 import Header from "../components/header";
 //import patient from "./patient";
 import "./exams.css";
+import { useApi } from "../hooks/use-api";
 
-// Temporary mock data
-const data = [
-  { id: 1, name: "Anom", age: 19, gender: "Male" },
-  { id: 2, name: "Meghan", age: 19, gender: "Female" },
-  { id: 3, name: "Subham", age: 25, gender: "Male" },
-  { id: 4, name: "Subham", age: 25, gender: "Male" },
-  { id: 5, name: "Subham", age: 25, gender: "Male" },
-  { id: 6, name: "Subham", age: 25, gender: "Male" },
-];
 
 export default function Exams() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState([]);
+  const { response } = useApi('exams')
+  const [examData, setExamData] = useState([])
 
-  const handleClick = (patientName) => {
-    const patient = data.find((p) => p.name === patientName);
-    if (patient) {
-      navigate(`/patient/${patient.id}`);
+  // Parse the response from DB 
+  useEffect(() => {
+    if (response) {
+      try {
+        const parsedData = JSON.parse(response);
+        setExamData(parsedData);
+        setFilteredData(parsedData)
+      } catch (error) {
+        console.error('Error parsing response data:', error);
+      }
     }
-  };
+  }, [response]);
+
+  //const handleClick = (patientName) => {
+  //  const patient = data.find((p) => p.name === patientName);
+  //  if (patient) {
+   //   navigate(`/patient/${patient.id}`);
+   // }
+  //};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       // Perform the search and update the filtered data
       const searchTermLowerCase = searchTerm.toLowerCase();
-      const filteredResults = data.filter((patient) =>
-        patient.name.toLowerCase().includes(searchTermLowerCase) || patient.age.toString().includes(searchTermLowerCase) ||
-        patient.gender.toLowerCase() === searchTermLowerCase
+      const filteredResults = examData.filter(exam =>
+      exam.patientID.toLowerCase().includes(searchTermLowerCase) ||
+      exam.age.toString().includes(searchTerm) ||
+      exam.sex.toLowerCase().includes(searchTermLowerCase) ||
+      exam.bmi.toString().includes(searchTerm) ||
+      exam.zipcode.includes(searchTerm) ||
+      exam.examID.includes(searchTerm) ||
+      exam.date.includes(searchTerm) ||
+      (exam.keyFindings && exam.keyFindings.toLowerCase().includes(searchTermLowerCase)) ||
+      (exam.brixiaScores && exam.brixiaScores.toString().includes(searchTerm))
       );
+      console.log("Filtered results:", filteredResults); // Debugging line
       setFilteredData(filteredResults);
     } else if (e.key === 'Backspace' && searchTerm === "") {
       // If Backspace is pressed and search term is empty, reset filtered data to original data
-      setFilteredData(data);
+      setFilteredData(examData);
     }
   };
-
+  
   return (
     <>
       <Header />
@@ -51,7 +66,8 @@ export default function Exams() {
           type="text"
           placeholder="Search..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={handleKeyPress}
+          onChange={(e) => setSearchTerm(e.target.value)} 
+          onKeyDown={handleKeyPress}
           style={{ fontFamily: "Josefin Sans", fontWeight: 400, fontSize: "20px", borderWidth: '2px'}}
         />
       </div>
@@ -60,23 +76,39 @@ export default function Exams() {
             @import
             url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap')
           </style>
-          {filteredData.length > 0 ? (
+          {examData.length > 0 ? (
           <table>
             <thead>
-              <tr>
-                <th>Name</th>
+            <th>Patient ID</th>
                 <th>Age</th>
-                <th>Gender</th>
-              </tr>
+                <th>Sex</th>
+                <th>BMI</th>
+                <th>Zipcode</th>
+                <th>Exam ID</th>
+                <th>Date</th>
+                <th>Key Findings</th>
+                <th>Brixia Scores</th>
+                <th>Image URL</th>
             </thead>
             <tbody>
-              {filteredData.map((patient) => (
-                <tr key={patient.id} className="table-row">
-                  <td onClick={() => handleClick(patient.name)} style={{ cursor: "pointer", color: "blue" }}>
-                    {patient.name}
+              {filteredData.map((exam) => (
+                <tr key={exam.patientID} className="table-row">
+                  <td onClick={() => navigate(`/patient/${exam.patientID}`)} style={{ cursor: "pointer", color: "blue" }}>
+                    {exam.patientID}
                   </td>
-                  <td>{patient.age}</td>
-                  <td>{patient.gender}</td>
+                  <td>{exam.age}</td>
+                  <td>{exam.sex}</td>
+                  <td>{exam.bmi}</td>
+                  <td>{exam.zipcode}</td>
+                  <td>{exam.examID}</td>
+                  <td>{exam.date}</td>
+                  <td>{exam.keyFindings}</td>
+                  <td>{exam.brixiaScores}</td>
+                  <td>
+                    <a href={exam.imageURL} target="_blank" rel="noopener noreferrer">
+                      View Image
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>

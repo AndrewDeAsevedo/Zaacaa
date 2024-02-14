@@ -49,15 +49,16 @@ async function deleteExam(req, res, next) {
   }
 }
 
-
-async function updateExam(res) {  
+// Gets a specific row of exam data based on the row ID for editing
+router.put('/edit/:id', async (req, res) => {
+//async function editExam(req, res, next) {  
   try {
     var id = new ObjectId(req.params.id);
     await client.connect();
     const examsDB = client.db("Patient")
     const examColl = examsDB.collection("covidExams")
     const query = {_id: id}
-    const update = {$set: {sex: "M"}}  
+    const update = {$set: req.body}  
     const result = await examColl.updateOne(query, update)
     res.status(200).json(result)
   } catch(error) {
@@ -66,7 +67,7 @@ async function updateExam(res) {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
-}
+})
 
 
 /* GET exams for specific patient. */

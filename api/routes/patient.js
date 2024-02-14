@@ -16,6 +16,7 @@ const client = new MongoClient(process.env.DB_URI, {
 });
 
 
+// Select a specific patient based on patient ID
 async function selectPatient(req, res, next) {  
   try {
     // = new ObjectId(req.params.id);
@@ -36,7 +37,6 @@ async function selectPatient(req, res, next) {
 }
 
 
-/* GET exams for specific patient. */
 router.get('/:patientID', function(req, res, next) {
     selectPatient(req, res, next)
 });

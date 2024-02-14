@@ -1,14 +1,10 @@
-.Exams {
-	font-family: "Josefin Sans", sans-serif;
-    font-size: 20px;
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 70px;
+.create-button {
+    display: block; /* Makes the button a block-level element */
+    margin: 100px auto; /* Vertically spaces the button and centers it horizontally */
+    padding: 10px 20px; /* Optional: Adjusts the size of the button */
 }
-
+  
+  
 .header-container {
 	display: flex;
 	align-items: center;

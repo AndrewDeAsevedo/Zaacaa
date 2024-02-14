@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Exams from "./pages/exams";
 import CreateExam from "./pages/CreateExam";
+import EditExam from "./pages/EditExam";
 import Patient from "./pages/Patient";
 import Login from "./pages/login";
 //import Navbar from './components/Navbar'
@@ -35,6 +36,7 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/exams" element={<Exams />} />
             <Route path="/exam/create" element={<CreateExam />} />
+            <Route path="/exam/edit/:_id" element={<EditExam />} /> 
             <Route path="/patient" element={<Patient />} />
           </Routes>
         </div>

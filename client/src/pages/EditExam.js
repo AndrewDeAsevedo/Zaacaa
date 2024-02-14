@@ -1,49 +1,59 @@
 // Allows you to create a new exam?
-import "./createExam.css";
-import { useState } from "react";
-import ReactDOM from "react-dom/client";
-import { useNavigate } from "react-router-dom";
+//import "./createExam.css";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useApi } from "../hooks/use-api";
 
 import Header from "../components/header";
 
-const CreateExam = () => {
+const EditExam = () => {
   const [inputs, setInputs] = useState({});
   const [successMessage, setSuccessMessage] = useState(""); // State to control success message display
+  const { _id } = useParams(); // Access _id from URL params
   let navigate = useNavigate();
+    useEffect(() => {
+        const fetchExamDetails = async () => {
+        // Replace the URL with your actual endpoint to fetch an exam by _id
+        try {
+            const response = await fetch(`http://localhost:9000/get/${_id}`);
+            if (response.ok) {
+                const examDetails = await response.json();    
+                setInputs(examDetails); // Populate form fields with fetched exam details
+            }
+        } catch (error) {
+            console.error("Error fetching exam details:", error)
+        }
+        }
+        fetchExamDetails();
+        }, [_id]); // This will call fetchExamDetails when the component mounts or _id changes
+        
 
-  const onSubmit = async () => {
-    try {
-      //const response =  useApi('/admin/create/{"age": "60","sex": "F","bmi": "27.6","exams":[{"examId":"exam_1","findings":"clear lungs"},{"examId":"exam_1","findings":"swollen lungs"}}')
-      const response = await fetch(
-        "http://localhost:9000/admin/create/" + JSON.stringify(inputs)
-      );
-
-      // Handle success
-      if (response.ok) {
-        setSuccessMessage("Exam successfully created.");
-        setInputs({
-          patientID: "",
-          age: "",
-          sex: "",
-          bmi: "",
-          zipcode: "",
-          examID: "",
-          date: "",
-          keyFindings: "",
-          brixiaScores: "",
-          imageURL: "",
-        }); //clear inputs
-        //const result = await response.json();
-        //console.log('Exam created:', result);
-      } else {
-        setSuccessMessage("Failed to create exam." + JSON.stringify(inputs));
-        // Handle error
-      }
-    } catch (error) {
-      console.error("Error creating exam:", error);
-    }
-  };
+    const onEdit = async (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+        const newData = {...inputs}; // makes a copy of inputs
+        delete newData._id; // Remove the _id field if present
+        try {
+            const response = await fetch(`http://localhost:9000/admin/edit/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newData) // Send the updated exam details as JSON
+            });
+    
+            if (response.ok) {
+                //const data = await response.json(); 
+                setSuccessMessage("Exam successfully updated.");
+                // Optionally navigate away or refresh data
+            } else {
+                const errorData = await response.text();
+                setSuccessMessage(`Exam update failed.: ${errorData}`);
+            }
+        } catch (error) {
+            setSuccessMessage("Error updating exam.");
+        }
+    };
+      
 
   const onCancel = () => {
     // Logic for cancel action (e.g., clear form, navigate to another page)
@@ -55,6 +65,7 @@ const CreateExam = () => {
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
+
     const handleURI = (event) => {
         const name = event.target.name;
         const value = encodeURI(event.target.value);
@@ -62,8 +73,8 @@ const CreateExam = () => {
     }
 
     return (
-        <div className="CreateExam">
-            <h2>Create Exam</h2>
+        <div className="EditExam">
+            <h2>Edit Exam</h2>
             <form className="form-container">
                 <div className="form-item">
                     <label htmlFor="patientID">Patient ID:</label>
@@ -168,7 +179,7 @@ const CreateExam = () => {
                 {/* Button is placed outside the form to align it at the bottom of the page */}
             </form>
             <div className="button-container">
-                <button type="button" className="submit-button" onClick={onSubmit}>Add Exam</button>
+            <button type="submit" className="submit-button" onClick={onEdit}>Edit Exam</button>
                 <button type="button" className="cancel-button" onClick={onCancel}>Cancel</button>
             </div>
             {successMessage && <p>{successMessage}</p>}
@@ -176,4 +187,4 @@ const CreateExam = () => {
     );
     }
 
-export default CreateExam
+export default EditExam
