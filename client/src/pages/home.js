@@ -26,7 +26,7 @@ const Home = () => {
     };
 
     return(
-            <><Header /><div className="home">
+            <><Header /><body></body><div className="home">
                 <div class = "background-image">
                     <div class = "background-content">
                         <h1>Deliver an unparalleled standard of care for patients</h1>
@@ -39,7 +39,7 @@ const Home = () => {
                 <br></br>
 
                 <div class="divider"></div>
-
+                
                 <div className="about">
                     <div className="main-about">
                         <h1>About Us</h1>
