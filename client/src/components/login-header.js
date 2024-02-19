@@ -25,10 +25,7 @@ export default function Header() {
             @import
             url('https://fonts.googleapis.com/css2?family=Bungee&family=Lily+Script+One&display=swap')
           </style>
-          <a href="/exams">Exams</a>
-          <a href="/admin">Admin</a>
           <a href = "/contact">Contact</a>
-          <a href="/home">Sign-out</a>
         </nav>
       </div>
     </header>

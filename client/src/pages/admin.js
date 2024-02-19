@@ -71,7 +71,7 @@ const Admin = () => {
                 <th>Date</th>
                 <th>Key Findings</th>
                 <th>Brixia Scores</th>
-                <th>Image URL</th>
+                <th>Image</th>
             </thead>
             <tbody>
               {examData.map((exam) => (
@@ -88,9 +88,9 @@ const Admin = () => {
                   <td>{exam.keyFindings}</td>
                   <td>{exam.brixiaScores}</td>
                   <td>
-                    <a href={exam.imageURL} target="_blank" rel="noopener noreferrer">
-                      View Image
-                    </a>
+                  {exam.imageURL && (
+                      <img src={exam.imageURL} alt="N/A" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                    )}
                   </td>
                   <td>
                     <a href={`/exam/edit/${exam._id}`} onClick={() => onEdit} style={{ color: "blue" }}>Edit</a>

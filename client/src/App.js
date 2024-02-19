@@ -14,6 +14,7 @@ import CreateExam from "./pages/CreateExam";
 import EditExam from "./pages/EditExam";
 import Patient from "./pages/Patient";
 import Login from "./pages/login";
+import Contact from "./pages/Contact";
 //import Navbar from './components/Navbar'
 
 function App() {
@@ -30,10 +31,11 @@ function App() {
       <BrowserRouter>
         <div className="pages">
           <Routes>
-            <Route index element={<Login />} />
+            <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/exams" element={<Exams />} />
             <Route path="/exam/create" element={<CreateExam />} />
             <Route path="/exam/edit/:_id" element={<EditExam />} /> 
