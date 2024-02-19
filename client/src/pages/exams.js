@@ -81,7 +81,6 @@ export default function Exams() {
             <thead>
               <tr>
                 <th>Patient ID</th>
-            <th>Patient oD</th>
                 <th>Age</th>
                 <th>Sex</th>
                 <th>BMI</th>
@@ -96,8 +95,9 @@ export default function Exams() {
             <tbody>
               {filteredData.map((exam) => (
                 <tr key={exam.patientID} className="table-row">
-        
-                  <a href="/pid"> {exam.patientID}</a>
+                  <td>
+                    <a href="/pid"> {exam.patientID}</a>
+                  </td>
                   <td>{exam.age}</td>
                   <td>{exam.sex}</td>
                   <td>{exam.bmi}</td>
