@@ -1,5 +1,16 @@
 // import React from "react";
+
+
+
+
+
+
 import React, { useEffect, useState } from "react";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
 import Header from "../components/header";
 //import patient from "./patient";
@@ -76,46 +87,87 @@ export default function Exams() {
             @import
             url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap')
           </style>
-          {examData.length > 0 ? (
-          <table>
-            <thead>
-            <th>Patient oD</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>BMI</th>
-                <th>Zipcode</th>
-                <th>Exam ID</th>
-                <th>Date</th>
-                <th>Key Findings</th>
-                <th>Brixia Scores</th>
-                <th>Image URL</th>
-            </thead>
-            <tbody>
-              {filteredData.map((exam) => (
-                <tr key={exam.patientID} className="table-row">
         
-                  <a href="/pid"> {exam.patientID}</a>
-                  <td>{exam.age}</td>
-                  <td>{exam.sex}</td>
-                  <td>{exam.bmi}</td>
-                  <td>{exam.zipcode}</td>
-                  <td>{exam.examID}</td>
-                  <td>{exam.date}</td>
-                  <td>{exam.keyFindings}</td>
-                  <td>{exam.brixiaScores}</td>
-                  <td>
-                    <a href={exam.imageURL} target="_blank" rel="noopener noreferrer">
-                      View Image
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <p>No results found</p>
-        )}
-      </div>
-    </>
-  );
+
+
+    
+
+
+   
+
+
+
+{examData.length > 0 ? (
+    filteredData.map((exam) =>  <Card sx={{ maxWidth: 645, padding :.1 ,margin:0.4} }>
+        
+        <CardActionArea>
+    
+             
+         
+          <CardMedia
+            component="img"
+            height="100"
+            image={exam.imageURL}
+            alt="patient id **"
+          />
+         
+          
+    <CardContent>
+        
+        <Typography gutterBottom variant="h5" component="div">
+        date of exam: {exam.date}
+
+                 
+                    
+                   
+                 
+                    
+                    
+                      
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        pid:{exam.examID}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        sex:{exam.sex}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        bmi: {exam.bmi}
+        </Typography>
+        <Typography gutterBottom variant="body2" component="div" >
+        exam details
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        key Findings:{exam.keyFindings}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        brixia score:{exam.brixiaScores}
+        </Typography>
+       
+      </CardContent>
+         
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            edit
+          </Button>
+          <Button size="small" color="primary">
+            delete
+          </Button>
+        </CardActions>
+      </Card>
+  ) 
+   
+    
+
+  ) : (
+    <p>No results found</p>
+  )}
+</div>
+</>
+);
 }
+  

@@ -14,6 +14,7 @@ import CreateExam from "./pages/CreateExam";
 import EditExam from "./pages/EditExam";
 import Patient from "./pages/Patient";
 import Login from "./pages/login";
+import PID from "./pages/PID";
 //import Navbar from './components/Navbar'
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/exam/create" element={<CreateExam />} />
             <Route path="/exam/edit/:_id" element={<EditExam />} /> 
             <Route path="/patient" element={<Patient />} />
+            <Route path="/pID" element={<PID/>} />
           </Routes>
         </div>
       </BrowserRouter>
