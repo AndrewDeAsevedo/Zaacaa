@@ -9,12 +9,13 @@ import { useNavigate } from "react-router-dom";
 // Pages and components
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
-import Exams from "./pages/exams";
+import Exams from "./pages/Exams";
 import CreateExam from "./pages/CreateExam";
 import EditExam from "./pages/EditExam";
 import Patient from "./pages/Patient";
 import Login from "./pages/login";
 import Contact from "./pages/Contact";
+import PID from "./pages/PID";
 //import Navbar from './components/Navbar'
 
 function App() {
