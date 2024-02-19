@@ -38,17 +38,17 @@ export default function Exams() {
     if (e.key === 'Enter') {
       // Perform the search and update the filtered data
       const searchTermLowerCase = searchTerm.toLowerCase();
-      const filteredResults = examData.filter(exam =>
-      exam.patientID.toLowerCase().includes(searchTermLowerCase) ||
-      exam.age.toString().includes(searchTerm) ||
-      exam.sex.toLowerCase().includes(searchTermLowerCase) ||
-      exam.bmi.toString().includes(searchTerm) ||
-      exam.zipcode.includes(searchTerm) ||
-      exam.examID.includes(searchTerm) ||
-      exam.date.includes(searchTerm) ||
-      (exam.keyFindings && exam.keyFindings.toLowerCase().includes(searchTermLowerCase)) ||
-      (exam.brixiaScores && exam.brixiaScores.toString().includes(searchTerm))
-      );
+      const filteredResults = examData.filter(exam => (
+        (exam.patientID && exam.patientID.toLowerCase().includes(searchTermLowerCase)) ||
+        (exam.age && exam.age.toString().includes(searchTerm)) ||
+        (exam.sex && exam.sex.toLowerCase().includes(searchTermLowerCase)) ||
+        (exam.bmi && exam.bmi.toString().includes(searchTerm)) ||
+        (exam.zipcode && exam.zipcode.includes(searchTerm)) ||
+        (exam.examID && exam.examID.includes(searchTerm)) ||
+        (exam.date && exam.date.includes(searchTerm)) ||
+        (exam.keyFindings && exam.keyFindings.toLowerCase().includes(searchTermLowerCase)) ||
+        (exam.brixiaScores && exam.brixiaScores.toString().includes(searchTerm))
+      ));
       console.log("Filtered results:", filteredResults); // Debugging line
       setFilteredData(filteredResults);
     } else if (e.key === 'Backspace' && searchTerm === "") {
@@ -58,7 +58,7 @@ export default function Exams() {
   };
   
   return (
-    <>
+    <body>
       <Header />
       <div className="header-container">
         <h2 style={{ fontFamily: 'Josefin Sans', fontWeight: 700 }}> Exam Search: </h2>
@@ -79,6 +79,8 @@ export default function Exams() {
           {examData.length > 0 ? (
           <table>
             <thead>
+              <tr>
+                <th>Patient ID</th>
             <th>Patient oD</th>
                 <th>Age</th>
                 <th>Sex</th>
@@ -88,7 +90,8 @@ export default function Exams() {
                 <th>Date</th>
                 <th>Key Findings</th>
                 <th>Brixia Scores</th>
-                <th>Image URL</th>
+                <th>Image</th>
+              </tr>
             </thead>
             <tbody>
               {filteredData.map((exam) => (
@@ -104,9 +107,9 @@ export default function Exams() {
                   <td>{exam.keyFindings}</td>
                   <td>{exam.brixiaScores}</td>
                   <td>
-                    <a href={exam.imageURL} target="_blank" rel="noopener noreferrer">
-                      View Image
-                    </a>
+                    {exam.imageURL && (
+                      <img src={exam.imageURL} alt="N/A" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                    )}
                   </td>
                 </tr>
               ))}
@@ -116,6 +119,6 @@ export default function Exams() {
           <p>No results found</p>
         )}
       </div>
-    </>
+    </body>
   );
 }
