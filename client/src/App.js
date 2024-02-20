@@ -15,6 +15,7 @@ import Patient from "./pages/Patient";
 import Login from "./pages/login";
 import Contact from "./pages/Contact";
 import PID from "./pages/PID";
+import SignUp from "./pages/signup";
 //import Navbar from './components/Navbar'
 
 function App() {
@@ -38,9 +39,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/exams" element={<Exams />} />
             <Route path="/exam/create" element={<CreateExam />} />
-            <Route path="/exam/edit/:_id" element={<EditExam />} /> 
+            <Route path="/exam/edit/:_id" element={<EditExam />} />
             <Route path="/patient" element={<Patient />} />
-            <Route path="/pID" element={<PID/>} />
+            <Route path="/pID" element={<PID />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </div>
       </BrowserRouter>
