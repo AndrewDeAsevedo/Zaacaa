@@ -67,7 +67,7 @@ Link to live demo here
       <td><a href="https://github.com/AndrewDeAsevedo">Andrew De Asevedo</a></td>
       <td><a href="https://github.com/camilleb2700">Camille Baptiste</a></td>
       <td><a href="https://github.com/AlbertoChavez928">Alberto Chavez</a></td>
-      <td><a href="url">Ayman Alabbasi</a></td>
+      <td><a href="https://github.com/AymanDevOps">Ayman Alabbasi</a></td>
       <td><a href="https://github.com/zachverdieu">Zacharie Verdieu</a></td>
     </tr>
   </table>
