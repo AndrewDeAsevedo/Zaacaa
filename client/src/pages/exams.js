@@ -93,8 +93,8 @@ export default function Exams() {
               </tr>
             </thead>
             <tbody>
-              {filteredData.map((exam) => (
-                <tr key={exam.patientID} className="table-row">
+              {filteredData.map((exam, index) => (
+                <tr key={index} className="table-row">
                   <td>
                     <a href="/pid"> {exam.patientID}</a>
                   </td>
