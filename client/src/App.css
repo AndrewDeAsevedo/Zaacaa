@@ -3,7 +3,8 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  padding-top: 2vh;
+  align-items: center;
   pointer-events: none;
 }
 

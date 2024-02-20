@@ -1,4 +1,5 @@
 body {
+  background-color: white;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -7,7 +8,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*For the nav bar (at the top of page)*/
+header {
+  background: #bfbebe;
+}
+
+/*Content inside nav bar*/
+header .container{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px; /*10 px up-down, 20 px left-right*/ 
+  display: flex;
+  align-items: center;             /*Vertical placement of the content (middle of nav bar)*/ 
+  justify-content: space-between;  /*Puts space between the content elements left-right*/
+}
+
+/*Anchor tag*/
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*
+.pages{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+*/

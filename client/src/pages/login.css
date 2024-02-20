@@ -1,0 +1,110 @@
+/* Style the navigation bar*/
+.header {
+  background: linear-gradient(to right, #bfb9fa, #ade6e6);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+body {
+  margin-top: 0px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  margin-top: 80px;
+  background-image: url("docs2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.logo-and-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo-and-name {
+  display: flex;
+  align-items: center;
+}
+
+.App-logo {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.website-name {
+  font-family: "Bungee", sans-serif;
+  font-size: 30px;
+  margin-right: 10px;
+  color: white;
+}
+
+/* Style the links inside the navigation bar */
+.header a, b {
+  font-family: "Josefin Sans", sans-serif;
+  float: middle;
+  color: white;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-bottom: 16px;
+  text-decoration: none;
+  font-size: 25px;
+  text-shadow: 2px 2px 10px #bababa;
+}
+
+/* Change the color of links on hover */
+.header a:hover, b:hover {
+  color: black;
+}
+
+.button {
+  font-family: "Josefin Sans", sans-serif;
+  background: linear-gradient(to right, #BFB9FA, #ade6e6);
+  color: white;
+  font-size: 20px;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  border-color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.login-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  margin: auto;
+}
+
+.login-container h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form input {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
