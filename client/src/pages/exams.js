@@ -108,7 +108,9 @@ export default function Exams() {
                   <td>{exam.brixiaScores}</td>
                   <td>
                     {exam.imageURL && (
+                      <a href={exam.imageURL} target="_blank" rel="noopener noreferrer">
                       <img src={exam.imageURL} alt="N/A" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                    </a>
                     )}
                   </td>
                 </tr>

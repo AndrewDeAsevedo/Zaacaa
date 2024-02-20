@@ -1,5 +1,3 @@
-// Icon is from: <a href="https://www.flaticon.com/free-icons/x-ray" title="x ray icons">X ray icons created by Flat Icons - Flaticon</a>
-
 import React from "react";
 import "./header.css";
 
