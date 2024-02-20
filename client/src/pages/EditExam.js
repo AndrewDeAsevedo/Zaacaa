@@ -1,9 +1,7 @@
-// Allows you to create a new exam?
-//import "./createExam.css";
+import "./editExam.css";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useApi } from "../hooks/use-api";
-
 import Header from "../components/header";
 
 const EditExam = () => {
@@ -71,8 +69,9 @@ const EditExam = () => {
   };
 
   return (
-    <div className="EditExam">
+    <><Header /><div className="editExam">
       <h2>Edit Exam</h2>
+      <div class="center-container">
       <form className="form-container">
         <div className="form-item">
           <label htmlFor="patientID">Patient ID:</label>
@@ -81,8 +80,7 @@ const EditExam = () => {
             name="patientID"
             id="patientID"
             value={inputs.patientID || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="age">Age:</label>
@@ -91,8 +89,7 @@ const EditExam = () => {
             name="age"
             id="age"
             value={inputs.age || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="sex">Sex:</label>
@@ -101,8 +98,7 @@ const EditExam = () => {
             name="sex"
             id="sex"
             value={inputs.sex || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="bmi">BMI:</label>
@@ -111,8 +107,7 @@ const EditExam = () => {
             name="bmi"
             id="bmi"
             value={inputs.bmi || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="zipcode">Zip Code:</label>
@@ -121,8 +116,7 @@ const EditExam = () => {
             name="zipcode"
             id="zipcode"
             value={inputs.zipcode || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="examID">Exam ID:</label>
@@ -131,8 +125,7 @@ const EditExam = () => {
             name="examID"
             id="examID"
             value={inputs.examID || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="date">Date:</label>
@@ -141,8 +134,7 @@ const EditExam = () => {
             name="date"
             id="date"
             value={inputs.date || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="keyFindings">Key Findings:</label>
@@ -151,8 +143,7 @@ const EditExam = () => {
             name="keyFindings"
             id="keyFindings"
             value={inputs.keyFindings || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="brixiaScores">Brixia Scores:</label>
@@ -161,8 +152,7 @@ const EditExam = () => {
             name="brixiaScores"
             id="brixiaScores"
             value={inputs.brixiaScores || ""}
-            onChange={handleChange}
-          />
+            onChange={handleChange} />
         </div>
         <div className="form-item">
           <label htmlFor="imageurl">Image URL:</label>
@@ -171,11 +161,11 @@ const EditExam = () => {
             name="imageURL"
             id="imageURL"
             value={inputs.imageURL || ""}
-            onChange={handleURI}
-          />
+            onChange={handleURI} />
         </div>
         {/* Button is placed outside the form to align it at the bottom of the page */}
       </form>
+      </div>
       <div className="button-container">
         <button type="submit" className="submit-button" onClick={onEdit}>
           Edit Exam
@@ -186,6 +176,7 @@ const EditExam = () => {
       </div>
       {successMessage && <p>{successMessage}</p>}
     </div>
+    </>
   );
 };
 

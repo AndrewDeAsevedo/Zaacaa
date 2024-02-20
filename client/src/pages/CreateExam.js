@@ -62,8 +62,13 @@ const CreateExam = () => {
     }
 
     return (
-        <div className="CreateExam">
+        <><Header /><div className="createExam">
+            <style>
+                @import
+                url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap')
+            </style>
             <h2>Create Exam</h2>
+            <div class="center-container">
             <form className="form-container">
                 <div className="form-item">
                     <label htmlFor="patientID">Patient ID:</label>
@@ -72,8 +77,7 @@ const CreateExam = () => {
                         name="patientID"
                         id="patientID"
                         value={inputs.patientID || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="age">Age:</label>
@@ -82,8 +86,7 @@ const CreateExam = () => {
                         name="age"
                         id="age"
                         value={inputs.age || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="sex">Sex:</label>
@@ -92,8 +95,7 @@ const CreateExam = () => {
                         name="sex"
                         id="sex"
                         value={inputs.sex || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="bmi">BMI:</label>
@@ -102,8 +104,7 @@ const CreateExam = () => {
                         name="bmi"
                         id="bmi"
                         value={inputs.bmi || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="zipcode">Zip Code:</label>
@@ -112,8 +113,7 @@ const CreateExam = () => {
                         name="zipcode"
                         id="zipcode"
                         value={inputs.zipcode || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="examID">Exam ID:</label>
@@ -122,8 +122,7 @@ const CreateExam = () => {
                         name="examID"
                         id="examID"
                         value={inputs.examID || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="date">Date:</label>
@@ -132,8 +131,7 @@ const CreateExam = () => {
                         name="date"
                         id="date"
                         value={inputs.date || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="keyFindings">Key Findings:</label>
@@ -142,8 +140,7 @@ const CreateExam = () => {
                         name="keyFindings"
                         id="keyFindings"
                         value={inputs.keyFindings || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="brixiaScores">Brixia Scores:</label>
@@ -152,8 +149,7 @@ const CreateExam = () => {
                         name="brixiaScores"
                         id="brixiaScores"
                         value={inputs.brixiaScores || ""}
-                        onChange={handleChange}
-                    />
+                        onChange={handleChange} />
                 </div>
                 <div className="form-item">
                     <label htmlFor="imageurl">Image URL:</label>
@@ -162,17 +158,16 @@ const CreateExam = () => {
                         name="imageURL"
                         id="imageURL"
                         value={inputs.imageURL || ""}
-                        onChange={handleURI}
-                    />
+                        onChange={handleURI} />
                 </div>
                 {/* Button is placed outside the form to align it at the bottom of the page */}
-            </form>
+            </form></div>
             <div className="button-container">
                 <button type="button" className="submit-button" onClick={onSubmit}>Add Exam</button>
                 <button type="button" className="cancel-button" onClick={onCancel}>Cancel</button>
             </div>
             {successMessage && <p>{successMessage}</p>}
-        </div>
+        </div></>
     );
     }
 

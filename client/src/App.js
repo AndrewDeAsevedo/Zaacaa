@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { useApi } from "./hooks/use-api";
 
 // BrowserRouter wraps everywhere we want to use the router, Router wraps all individual routes, Route creates a single route

@@ -1,34 +1,59 @@
-/* Add this to your CSS file */
-.form-container {
-    display: grid;
-    grid-template-columns: 150px 1fr; /* Fixed width for labels, 1fr for inputs */
-    gap: 10px 20px; /* Vertical and horizontal gaps between grid items */
-    margin-bottom: 20px;
-  }
-  
-  .form-item {
-    display: contents; /* This makes the label and input align with the grid */
-  }
-  
-  /* Style for the submit button to ensure it's centered 
-  .submit-button {
-    margin-top: 20px; /* Adds some space between the form and the button 
-  }*/
+.center-container {
+  display: flex;
+  justify-content: center;
+}
 
-/* Centering the button container with gap */
+.form-container {
+  display: grid;
+  grid-template-columns: 150px 1fr; 
+  gap: 10px 20px; 
+  margin-bottom: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  width: 70%;
+  align-items: center;
+}
+  
+.form-item {
+  display: contents;
+}
+
 .button-container {
-    display: flex;
-    justify-content: center; /* Align buttons horizontally in the center */
-    gap: 20px; /* Increase space between buttons */
-    margin-top: 20px; /* Space above the buttons */
-  }
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  margin-top: 20px; 
+  font-family: "Josefin Sans", sans-serif;
+}
   
+.button-container button {
+  padding: 10px 20px; 
+  cursor: pointer;
+  font-family: "Josefin Sans", sans-serif;
+  background: linear-gradient(to right, #BFB9FA, #ade6e6);
+  color: white;
+  font-size: 20px;
+	padding: 1rem 2rem;
+	border-radius: 15px;
+	border-color: white;
+}
   
-  /* Additional button styles, if needed, to ensure consistency */
-  .button-container button {
-    padding: 10px 20px; /* Adjust padding as necessary */
-    cursor: pointer;
-  }
-  
-  
-  
+.createExam {
+  font-family: "Josefin Sans", sans-serif;
+  margin-top: 120px;
+  font-size: 20px;
+}
+
+.createExam form {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+}
+
+.createExam label {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+}
+
+.createExam input {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+}

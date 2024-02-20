@@ -13,6 +13,8 @@ export default function Login() {
   return (
     <><body>
       <Header />
+        <div class="login">
+        {/* <div class="login-image" style={{ backgroundImage: 'url("docs.png")' }}></div> */}
         <div class="login-container">
         <h1>Login Page</h1>
         <form class="login-form">
@@ -23,6 +25,7 @@ export default function Login() {
           </button>
         </form>
       </div>
+        </div>
     </body>
     </>
   );
