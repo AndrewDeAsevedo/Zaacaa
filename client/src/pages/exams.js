@@ -24,14 +24,22 @@ export default function Exams() {
         console.error("Error parsing response data:", error);
       }
     }
+    // Check if the current URL contains "/patient/"
+    const isPatientPage = window.location.pathname.includes("/patient/");
+
+    if (isPatientPage) {
+      import("./patientid").then((PatientDetails) => {
+        // Call the function or logic from the imported module
+        PatientDetails.handlePatientPage();
+      });
+    }
   }, [response]);
 
-  //const handleClick = (patientName) => {
-  //  const patient = data.find((p) => p.name === patientName);
-  //  if (patient) {
-  //   navigate(`/patient/${patient.id}`);
-  // }
-  //};
+  const handleClick = (patientID) => {
+    // Use the navigate function to redirect to the patient details page
+    navigate(`/patient/${patientID}`);
+  };
+
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -107,7 +115,9 @@ export default function Exams() {
               {filteredData.map((exam, index) => (
                 <tr key={index} className="table-row">
                   <td>
-                    <a href="/pid"> {exam.patientID}</a>
+                  <a href="" onClick={() => handleClick(exam.patientID)}>
+                {exam.patientID}
+                  </a>
                   </td>
                   <td>{exam.age}</td>
                   <td>{exam.sex}</td>

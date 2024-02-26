@@ -7,15 +7,17 @@ import { useNavigate } from "react-router-dom";
 
 // Pages and components
 import Home from "./pages/home";
-import Admin from "./pages/Admin";
+import Admin from "./pages/admin";
 import Exams from "./pages/exams";
 import CreateExam from "./pages/CreateExam";
 import EditExam from "./pages/EditExam";
-import Patient from "./pages/Patient";
+import Patient from "./pages/patient";
 import Login from "./pages/login";
 import Contact from "./pages/Contact";
-import PID from "./pages/PID";
+// import PID from "./pages/PID";
 import SignUp from "./pages/signup";
+import PatientDetails from "./pages/patientid";
+// import Header from "./components/header";
 //import Navbar from './components/Navbar'
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
       </header>
   */}
       <BrowserRouter>
+        {/* <Header/> */}
         <div className="pages">
           <Routes>
             <Route index element={<Home />} />
@@ -41,8 +44,9 @@ function App() {
             <Route path="/exam/create" element={<CreateExam />} />
             <Route path="/exam/edit/:_id" element={<EditExam />} />
             <Route path="/patient" element={<Patient />} />
-            <Route path="/pID" element={<PID />} />
+            {/* <Route path="/pID" element={<PID />} /> */}
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/patient/:id" element={<PatientDetails />} />
           </Routes>
         </div>
       </BrowserRouter>

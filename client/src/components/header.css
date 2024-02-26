@@ -11,9 +11,9 @@
   z-index: 1000;
 }
 
-body {
+/* body {
   margin-top: 100px;
-}
+} */
 
 .logo-and-nav {
   display: flex;
