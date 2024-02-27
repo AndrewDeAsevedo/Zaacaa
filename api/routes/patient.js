@@ -3,7 +3,7 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://cb2700:test123@mernapp.ruownzp.mongodb.net/?retryWrites=true&w=majority";
+//const uri = "mongodb+srv://cb2700:test123@mernapp.ruownzp.mongodb.net/?retryWrites=true&w=majority";
 
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -31,7 +31,6 @@ async function selectPatient(req, res, next) {
   } catch(error) {
       res.status(400).json({error: error.message})
   } finally {
-    // Ensures that the client will close when you finish/error
     await client.close();
   }
 }

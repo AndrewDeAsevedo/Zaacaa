@@ -7,11 +7,10 @@ var logger = require('morgan');
 var cors = require('cors');
 require('dotenv').config()
 
-//var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var patientRouter = require('./routes/Patient');
 var examRouter = require('./routes/exam');
-var adminRouter = require('./routes/Admin');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 

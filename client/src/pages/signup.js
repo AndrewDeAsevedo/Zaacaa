@@ -32,7 +32,6 @@ export default function SignUp() {
       // Email already in use
       alert("Email already in use. Please use a different email.");
     } else {
-      // Other errors
       alert(data.error);
     }
     console.log(data)

@@ -1,5 +1,4 @@
 const express = require('express');
-//const Exam = require('../models/userModel')
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -20,7 +19,6 @@ const client = new MongoClient(process.env.DB_URI, {
     }
   });
   
-//db.registered-employees.createIndex({ "email": 1 }, { unique: true });
 
 
 router.post('/register', async (req, res) => {
@@ -47,7 +45,6 @@ router.post('/register', async (req, res) => {
             res.json({ status: 'error', error: 'Failed to register user' });
         }
     }
-    // Consider removing client.close() to keep the connection open for future requests
 })
 
 

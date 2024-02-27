@@ -21,8 +21,7 @@ const CreateExam = () => {
         body: JSON.stringify(inputs)
       };
       
-      const response = await fetch(
-        "http://localhost:9000/admin/create", requestOptions);
+      const response = await fetch("http://localhost:9000/admin/create", requestOptions);
 
       // Handle success
       if (response.ok) {
@@ -39,8 +38,6 @@ const CreateExam = () => {
           brixiaScores: "",
           imageURL: "",
         }); //clear inputs
-        //const result = await response.json();
-        //console.log('Exam created:', result);
       } else {
         setSuccessMessage("Failed to create exam." + JSON.stringify(inputs));
         // Handle error

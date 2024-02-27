@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-const bcrypt = requre('bcrypt')
-
 const getUser = async (req, res) => {
   return res.status(200).json({
     success: true,

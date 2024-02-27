@@ -25,7 +25,6 @@ export default function Login() {
     if (data.status === 'ok') {
       navigate("/exams")
     } else {
-      // handle log in failure
       alert(data.error || 'Invalid username or password')
     }
   }
