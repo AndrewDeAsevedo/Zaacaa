@@ -1,3 +1,6 @@
+const mongoose = require('mongoose')
+const bcrypt = requre('bcrypt')
+
 const getUser = async (req, res) => {
   return res.status(200).json({
     success: true,
@@ -5,18 +8,28 @@ const getUser = async (req, res) => {
   });
 }
 
-const mongoose = require('mongoose')
+const createUser = async (req, res) => {
+  try{
+    const { email, password } = req.body;
+    const hashedPassword = await hashedPassword(password)
 
+    // create new user object
+    const newUser = new User({
+      email,
+      password: hashedPassword,
+    })
+    // Save the user to the database
+    await newUser.save();
+    
+    // Respond with success
+    res.status(201).json("User created successfully");
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Error creating the user')
+    }
+}
 
-mongoose.connect(process.env.DATABASE_URI)
-.then(() => {
-  console.log('listening on port and connected to db', process.env.PORT)
-})
-.catch((error) => {
-  console.log(error)
-})
-const db = mongoose.connection
 
 module.exports = {
-  getUser,
+  createUser,
 };

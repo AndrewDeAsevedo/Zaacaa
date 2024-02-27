@@ -9,9 +9,9 @@ require('dotenv').config()
 
 //var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var patientRouter = require('./routes/patient');
+var patientRouter = require('./routes/Patient');
 var examRouter = require('./routes/exam');
-var adminRouter = require('./routes/admin');
+var adminRouter = require('./routes/Admin');
 
 var app = express();
 

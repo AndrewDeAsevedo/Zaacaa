@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
+const bcrypt = require('bcrypt')
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 //const uri = "mongodb+srv://cb2700:test123@mernapp.ruownzp.mongodb.net/?retryWrites=true&w=majority";
@@ -16,11 +17,26 @@ const client = new MongoClient(process.env.DB_URI, {
 });
 
 
-async function createExam(req, res, next) {  
-//router.post('/create', async (req, res) => {
+// Hashed Admin Password
+const hashedPassword = process.env.HASHPASSW
+
+// Endpoint to verify password
+router.post('/verifyPassword', async (req, res) => {
+  const { adminPassword } = req.body;
+
+  // Compare provided password with the hashed password
+  const match = await bcrypt.compare(adminPassword, hashedPassword);
+
+  if (match) {
+    res.json({ success: true });
+  } else {
+    res.json({success: false , message: 'Incorrect password' });
+  }
+});
+
+router.post('/create', async (req, res) => {
   try {
-    const newExam = JSON.parse(req.params.newExam);
-    //const newExam = req.body
+    const newExam = req.body
     await client.connect()
     const examsDB = client.db("Patient")
     const examColl = examsDB.collection("covidExams")
@@ -29,7 +45,7 @@ async function createExam(req, res, next) {
   } catch(error) {
       res.status(400).json({error: error.message})
   } 
-}
+})
 
 
 async function deleteExam(req, res, next) {  
