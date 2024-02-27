@@ -30,6 +30,7 @@ function App() {
       </header>
   */}
       <BrowserRouter>
+        {/* <Header/> */}
         <div className="pages">
           <Routes>
             <Route index element={<Home />} />
@@ -41,8 +42,9 @@ function App() {
             <Route path="/exam/create" element={<CreateExam />} />
             <Route path="/exam/edit/:_id" element={<EditExam />} />
             <Route path="/patient" element={<Patient />} />
-            <Route path="/pID" element={<PID />} />
+            {/* <Route path="/pID" element={<PID />} /> */}
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/patient/:id" element={<PatientDetails />} />
           </Routes>
         </div>
       </BrowserRouter>

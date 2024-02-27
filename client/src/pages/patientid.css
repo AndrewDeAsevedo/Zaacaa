@@ -1,0 +1,10 @@
+.patient {
+    margin-top: 30px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 20px;
+}

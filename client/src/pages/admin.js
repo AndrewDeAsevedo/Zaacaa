@@ -49,7 +49,7 @@ const Admin = () => {
   return (
     <>
       <Header />
-      <div className="button-container"> 
+      <div style={{ marginTop: "120px" }}className="button-container"> 
       <button type="button" className="create-button" onClick={onCreate}>
         Create Exam
       </button>

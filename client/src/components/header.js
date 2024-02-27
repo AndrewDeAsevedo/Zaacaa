@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 
 const handleAdminClick = async (e) => {
@@ -33,10 +34,16 @@ const handleAdminClick = async (e) => {
 
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate("/home");
+  };
+
   return (
     <header className="header">
       <div className="logo-and-nav">
-        <div className="logo-and-name">
+        <div className="logo-and-name" onClick={navigateToHome} style={{ cursor: 'pointer' }}>
           <img
             src={require("./favicon.png")}
             className="App-logo"
