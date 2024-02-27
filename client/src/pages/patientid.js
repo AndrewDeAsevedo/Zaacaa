@@ -1,5 +1,10 @@
 import "./patientid.css";
 import React, { useEffect, useState } from "react";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 import Header from "../components/header";
 import { useApi } from "../hooks/use-api";
 import { useParams } from "react-router-dom";
@@ -8,6 +13,9 @@ export default function PatientDetails() {
     const [filteredData, setFilteredData] = useState([]);
     const { response } = useApi("exams");
     const { id: patientIDFromURL } = useParams();
+    const [selectedCard, setSelectedCard] = useState(null); // Track the selected card
+    const [movedCardData, setMovedCardData] = useState(null); // Data for the moved card
+
 
     useEffect(() => {
       if (response) {
@@ -20,6 +28,16 @@ export default function PatientDetails() {
       }
     }, [response, patientIDFromURL]);
 
+    const handleCardClick = (exam) => {
+      if (selectedCard === exam) {
+        setSelectedCard(null); 
+        setMovedCardData(null); 
+      } else {
+        setSelectedCard(exam);
+        setMovedCardData(exam);
+      }
+    };
+
   return (
     <body><Header />
         <h2 style={{ marginTop: "120px" }}>Patient {patientIDFromURL}</h2>
@@ -29,48 +47,90 @@ export default function PatientDetails() {
           url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap')
         </style>
         {filteredData.length > 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>Patient ID</th>
-                <th>Age</th>
-                <th>Sex</th>
-                <th>BMI</th>
-                <th>Zipcode</th>
-                <th>Exam ID</th>
-                <th>Date</th>
-                <th>Key Findings</th>
-                <th>Brixia Scores</th>
-                <th>Image</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((exam, index) => (
-                <tr key={index} className="table-row">
-                  <td>{exam.patientID}</td>
-                  <td>{exam.age}</td>
-                  <td>{exam.sex}</td>
-                  <td>{exam.bmi}</td>
-                  <td>{exam.zipcode}</td>
-                  <td>{exam.examID}</td>
-                  <td>{exam.date}</td>
-                  <td>{exam.keyFindings}</td>
-                  <td>{exam.brixiaScores}</td>
-                  <td>
-                    {exam.imageURL && (
-                      <a href={exam.imageURL} target="_blank" rel="noopener noreferrer">
-                      <img src={exam.imageURL} alt="N/A" style={{ maxWidth: '100px', maxHeight: '100px' }} />
-                    </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          filteredData.map((exam) => (
+            <Card
+            style={{ marginTop: "120px" }}
+              key={exam.examID} 
+              className = "Card"
+              onClick={() => handleCardClick(exam)}
+            >
+              <CardActionArea>
+              <CardMedia
+                component="div"
+                style={{
+                  width: '150px', 
+                  height: '170px', 
+                  backgroundColor: 'white', 
+                  display: 'flex', 
+                }}
+              >
+                <img
+                  src={exam.imageURL}
+                  alt={`Patient ID ${exam.patientID}`}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    margin: 'auto'
+                  }}
+                />
+              </CardMedia>
+                <CardContent>
+                  <Typography 
+                    gutterBottom variant="h5" 
+                    component="div" 
+                    style = {{height: '50px', fontSize: '15px', fontFamily: "Josefin Sans, sans-serif"}}
+                  >
+                    {exam.name} Date of Exam: {exam.date}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          ))
         ) : (
           <p>No results found</p>
         )}
         </div>
+        {movedCardData && (
+          <Card
+            key={movedCardData.examID}
+            className="movedCard" 
+          >
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="300"
+                image={movedCardData.imageURL}
+                alt={`Patient ID ${movedCardData.patientID}`}
+                style={{ width: '100%', height: '350', backgroundColor: 'black'}}
+              />
+              <CardContent
+                height = "300"
+              >
+                  <Typography variant="body2" color="text.secondary">
+                    Age: {movedCardData.age}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Sex: {movedCardData.sex}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    BMI: {movedCardData.bmi}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Zipcode: {movedCardData.zipcode}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Exam ID: {movedCardData.examID}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Key Findings: {movedCardData.keyFindings}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Brixia Score: {movedCardData.brixiaScores}
+                  </Typography>
+                </CardContent>
+            </CardActionArea>
+          </Card>
+        )}
     </body>
   );
 }
