@@ -7,40 +7,40 @@ import Header from "../components/login-header";
 
 export default function SignUp() {
   let navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   async function registerUser(event) {
-    event.preventDefault()
-    const response = await fetch('http://localhost:9000/users/register', {
-      method: 'POST',
-      headers : {
-        'Content-Type': 'application/json',
+    event.preventDefault();
+    const response = await fetch("http://localhost:9000/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email,
         password,
-      })
-    })
+        isAdmin: false, // Set isAdmin to false during signup
+      }),
+    });
 
-    const data =  await response.json()
-    if (data.status === 'ok') {
+    const data = await response.json();
+    if (data.status === "ok") {
       // Registration successful
       console.log("Registration successful");
-      alert("Registration successful. Go back to login")
-      // checks error in console 
-    } else if (data.error === 'Email already exists') {
+      alert("Registration successful. Redirecting to login page");
+      navigate("/login");
+      // checks error in console
+    } else if (data.error === "Email already exists") {
       // Email already in use
       alert("Email already in use. Please use a different email.");
     } else {
       alert(data.error);
     }
-    console.log(data)
+    console.log(data);
   }
 
-
   const handleClickLI = () => {
-    let path = "/login";
-    navigate(path);
+    navigate("/login");
   };
 
   return (

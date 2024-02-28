@@ -5,34 +5,32 @@ import "./login.css";
 import Header from "../components/login-header";
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   let navigate = useNavigate();
 
   async function loginUser() {
-    const response = await fetch('http://localhost:9000/users/login', {
-      method: 'POST',
-      headers : {
-        'Content-Type': 'application/json',
+    const response = await fetch("http://localhost:9000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email,
         password,
-      })
-    })
-    const data = await response.json()
-    // checks if data can be retrieved 
-    if (data.status === 'ok') {
-      navigate("/exams")
+      }),
+    });
+    const data = await response.json();
+    // checks if data can be retrieved
+    if (data.status === "ok") {
+      navigate("/exams");
     } else {
-      alert(data.error || 'Invalid username or password')
+      alert(data.error || "Invalid username or password");
     }
   }
   const handleClickSU = () => {
-    let path = "/signup";
-    navigate(path);
+    navigate("/signup");
   };
-  
 
   return (
     <>
@@ -42,10 +40,16 @@ export default function Login() {
           <div class="login-container">
             <h1>Login Page</h1>
             <form class="login-form">
-              <input type="text" placeholder="Email" 
-              onChange={(e) => setEmail(e.target.value)} />
-              <input type="password" placeholder="Password" 
-              onChange={(e) => setPassword(e.target.value)}/>
+              <input
+                type="text"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <a href="" onClick={handleClickSU}>
                 Don't have an account? Sign up here.
               </a>
