@@ -16,6 +16,7 @@ export default function Contact() {
                 <Header />
                 <div className="contact-container">
                     <h1>Contact Us</h1>
+                    {/* using external website for forms goes to aymans email */}
                     <form className="contact-form" method="post" action="https://formsubmit.co/aymanadevops@gmail.com">
                         <label htmlFor="name">Your Name:</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required />
