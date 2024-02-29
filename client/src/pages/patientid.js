@@ -106,25 +106,32 @@ export default function PatientDetails() {
               <CardContent
                 height = "300"
               >
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     Age: {movedCardData.age}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     Sex: {movedCardData.sex}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     BMI: {movedCardData.bmi}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     Zipcode: {movedCardData.zipcode}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     Exam ID: {movedCardData.examID}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     Key Findings: {movedCardData.keyFindings}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"
+                  style = {{fontFamily: "Josefin Sans, sans-serif"}}>
                     Brixia Score: {movedCardData.brixiaScores}
                   </Typography>
                 </CardContent>
