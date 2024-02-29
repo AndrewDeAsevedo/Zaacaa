@@ -4,6 +4,10 @@ const bcrypt = require("bcrypt");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = process.env.JWT_SECRET;
+const cors = require("cors");
+const app = express();
+
+app.use(cors());
 
 //const UserController = require('../controllers/user-controller');
 
@@ -34,7 +38,6 @@ router.post("/register", async (req, res) => {
     const employeeData = {
       email: req.body.email,
       password: hashedPassword,
-      isAdmin: false, // Set to false unless manually changed
     };
 
     await employeeColl.insertOne(employeeData);
@@ -49,7 +52,22 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Modified login endpoint to include isAdmin check
+router.get("/me", authenticateToken, async (req, res) => {
+  try {
+    // Fetch user data from the database based on the authenticated user
+    const user = await User.findById(req.user.id);
+
+    // Respond with user data, including isAdmin field
+    res.json({
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 router.post("/login", async (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.json({
@@ -66,11 +84,10 @@ router.post("/login", async (req, res) => {
       // use bcrypt to compare provided password with password stored in db
       const isMatch = await bcrypt.compare(req.body.password, user.password);
       if (isMatch) {
-        // Include isAdmin field in token payload
+        // Generate a token
         const token = jwt.sign(
           {
             email: user.email,
-            isAdmin: user.isAdmin, // Set to true if user is admin
           },
           SECRET_KEY,
           { expiresIn: "24h" } // Token expires in 24 hours
