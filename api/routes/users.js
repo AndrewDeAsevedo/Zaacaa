@@ -52,11 +52,11 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.get("/me", authenticateToken, async (req, res) => {
+router.post("/me", authenticateToken, async (req, res) => {
   try {
     // Fetch user data from the database based on the authenticated user
     const user = await User.findById(req.user.id);
-
+    console.log(user.email);
     // Respond with user data, including isAdmin field
     res.json({
       email: user.email,

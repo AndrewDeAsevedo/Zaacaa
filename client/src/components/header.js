@@ -19,6 +19,7 @@ export default function Header() {
             isAdmin,
           }),
         });
+        console.log(response.isAdmin);
         const userData = await response.json();
         setIsAdmin(userData.isAdmin);
       } catch (error) {
